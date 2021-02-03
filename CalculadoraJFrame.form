@@ -10,7 +10,8 @@ package Telas;
  * @author phili
  */
 public class CalculadoraJFrame extends javax.swing.JFrame {
-
+    
+    double numero1, numero2, resultado;
     /**
      * Creates new form CalculadoraJFrame
      */
@@ -67,6 +68,7 @@ public class CalculadoraJFrame extends javax.swing.JFrame {
         Visor.setBackground(java.awt.SystemColor.activeCaptionBorder);
         Visor.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
         Visor.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        Visor.setText("0");
         Visor.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         Visor.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
@@ -166,12 +168,27 @@ public class CalculadoraJFrame extends javax.swing.JFrame {
 
         BMult.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         BMult.setText("x");
+        BMult.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BMultActionPerformed(evt);
+            }
+        });
 
         BSubtracao.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         BSubtracao.setText("-");
+        BSubtracao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BSubtracaoActionPerformed(evt);
+            }
+        });
 
         BSoma.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         BSoma.setText("+");
+        BSoma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BSomaActionPerformed(evt);
+            }
+        });
 
         BIgual.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         BIgual.setText("=");
@@ -317,6 +334,22 @@ public class CalculadoraJFrame extends javax.swing.JFrame {
         NumerosNoVisor('.');
     }                                      
 
+    private void BSomaActionPerformed(java.awt.event.ActionEvent evt) {                                      
+        usarNumero1();
+    }                                     
+
+    private void BMultActionPerformed(java.awt.event.ActionEvent evt) {                                      
+        usarNumero1();
+    }                                     
+
+    private void BSubtracaoActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        usarNumero1();
+    }  
+    
+    private void BdivisaoActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        usarNumero1();
+    }        
+
     /**
      * @param args the command line arguments
      */
@@ -380,5 +413,16 @@ public class CalculadoraJFrame extends javax.swing.JFrame {
         texto = texto + numero;
         Visor.setText(texto);
     }
+    
+    public void usarNumero1(){ 
+        numero1 = Double.parseDouble(Visor.getText()); // pegar o valor na tela, transformar em double e colocar na variaval double numero1
+        Visor.setText(""); // apagar o valor na tela
+    }
+    
+    public void usarNumero2(){ 
+        numero2 = Double.parseDouble(Visor.getText()); // pegar o valor na tela, transformar em double e colocar na variaval double numero2
+        Visor.setText(""); // apagar o valor na tela
+    }
+    
 
 }
