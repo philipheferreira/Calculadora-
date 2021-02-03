@@ -12,6 +12,7 @@ package Telas;
 public class CalculadoraJFrame extends javax.swing.JFrame {
     
     double numero1, numero2, resultado;
+    char operacao;
     /**
      * Creates new form CalculadoraJFrame
      */
@@ -165,6 +166,11 @@ public class CalculadoraJFrame extends javax.swing.JFrame {
 
         Bdivisao.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Bdivisao.setText("/");
+        Bdivisao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BdivisaoActionPerformed(evt);
+            }
+        });
 
         BMult.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         BMult.setText("x");
@@ -192,6 +198,11 @@ public class CalculadoraJFrame extends javax.swing.JFrame {
 
         BIgual.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         BIgual.setText("=");
+        BIgual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BIgualActionPerformed(evt);
+            }
+        });
 
         BRaiz.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         BRaiz.setText("√");
@@ -336,19 +347,28 @@ public class CalculadoraJFrame extends javax.swing.JFrame {
 
     private void BSomaActionPerformed(java.awt.event.ActionEvent evt) {                                      
         usarNumero1();
+        operacao = '+';
     }                                     
 
     private void BMultActionPerformed(java.awt.event.ActionEvent evt) {                                      
         usarNumero1();
+        operacao = '*';
     }                                     
 
     private void BSubtracaoActionPerformed(java.awt.event.ActionEvent evt) {                                           
         usarNumero1();
-    }  
-    
+        operacao = '-';
+    }                                          
+
     private void BdivisaoActionPerformed(java.awt.event.ActionEvent evt) {                                         
         usarNumero1();
-    }        
+        operacao = '/';
+    }                                        
+
+    private void BIgualActionPerformed(java.awt.event.ActionEvent evt) {                                       
+        usarNumero2();
+        calculo();
+    }                                      
 
     /**
      * @param args the command line arguments
@@ -424,5 +444,20 @@ public class CalculadoraJFrame extends javax.swing.JFrame {
         Visor.setText(""); // apagar o valor na tela
     }
     
+    public void calculo(){
+        if((numero1!=0) && (numero2!=0)){
+        if(operacao== '+'){ 
+            resultado = numero1 + numero2;
+        } else if (operacao == '/'){ 
+            resultado = numero1 / numero2;
+        } else if (operacao == '*'){ 
+            resultado = numero1 * numero2;
+        } else if(operacao == '-'){ 
+            resultado = numero1 - numero2;
+        }
+        
+        Visor.setText(String.valueOf(resultado));
+        }
+    }
 
 }
