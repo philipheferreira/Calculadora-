@@ -217,6 +217,11 @@ public class CalculadoraJFrame extends javax.swing.JFrame {
         BRaiz.setText("√");
 
         Backspace.setText("BackSpace");
+        Backspace.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackspaceActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -389,6 +394,14 @@ public class CalculadoraJFrame extends javax.swing.JFrame {
         resultado = 0;
         Visor.setText("0");
     }                                  
+
+    private void BackspaceActionPerformed(java.awt.event.ActionEvent evt) {                                          
+       String valor_do_Visor = Visor.getText();
+       
+       valor_do_Visor = valor_do_Visor.substring(0, valor_do_Visor.length());
+       
+       Visor.setText(valor_do_Visor);
+    }                                         
 
     /**
      * @param args the command line arguments
