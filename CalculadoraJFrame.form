@@ -398,9 +398,18 @@ public class CalculadoraJFrame extends javax.swing.JFrame {
     private void BackspaceActionPerformed(java.awt.event.ActionEvent evt) {                                          
        String valor_do_Visor = Visor.getText();
        
-       valor_do_Visor = valor_do_Visor.substring(0, valor_do_Visor.length());
+       if(valor_do_Visor.length() > 0){ 
+           valor_do_Visor = valor_do_Visor.substring(0, valor_do_Visor.length()-1);
+           Visor.setText(valor_do_Visor);
+           if (valor_do_Visor.length() == 0){ 
+               Visor.setText("0");
+           }
+       } else { 
+           Visor.setText("0");
+       }
        
-       Visor.setText(valor_do_Visor);
+       
+       
     }                                         
 
     /**
